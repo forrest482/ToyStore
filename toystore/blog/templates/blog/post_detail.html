@@ -1,7 +1,29 @@
+<!-- templates/blog/post_detail.html -->
 {% extends 'base.html' %} {% block content %}
 <div class="container mt-4">
   <h1 class="mb-3">{{ post.title }}</h1>
   <p>{{ post.content }}</p>
+
+  <!-- Image Gallery -->
+  <div class="row">
+    {% for media in post.media.all %} {% if media.media_type == 'IMG' %}
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="{{ media.file.url }}" target="_blank">
+          <img
+            src="{{ media.file.url }}"
+            alt="{{ media.caption }}"
+            style="width: 100%"
+          />
+          <div class="caption">
+            <p>{{ media.caption }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+
   <hr />
   <h4>Comments</h4>
   <div class="comments mb-4">
