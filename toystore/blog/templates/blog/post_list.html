@@ -1,0 +1,36 @@
+<!-- templates/blog/post_list.html -->
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-9">
+      <h1 class="mb-4">ToyStore Blog</h1>
+      {% for post in posts %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h2 class="card-title">
+            <a
+              href="{% url 'post_detail' post.id %}"
+              class="text-decoration-none"
+              >{{ post.title }}</a
+            >
+          </h2>
+          <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-lg-3 mt-3 mt-lg-0">
+      <h4 class="mb-3">Categories</h4>
+      <div class="list-group">
+        {% for category in categories %}
+        <a
+          href="{% url 'category_posts' category.id %}"
+          class="list-group-item list-group-item-action"
+          >{{ category.name }}</a
+        >
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
