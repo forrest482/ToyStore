@@ -21,6 +21,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    # def get_images(self):
+    #     return self.media.
+
 
 class Comment(models.Model):
     post = models.ForeignKey(

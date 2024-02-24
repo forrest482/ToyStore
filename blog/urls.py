@@ -17,5 +17,4 @@ urlpatterns = [
     path('api/posts/<int:pk>/', PostDetail.as_view(), name='post-detail'),
     path('api/posts/<int:post_id>/comment/',
          PostComment.as_view(), name='post_comment')
-
 ]
