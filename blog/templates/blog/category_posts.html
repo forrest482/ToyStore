@@ -2,7 +2,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
   <div class="col-md-9">
-    <h1>ToyStore Blog - {{ category.name }}</h1>
+    <h1>ToyStore Blog - {{ category.title }}</h1>
     <hr />
     {% for post in posts %}
     <div class="card mb-3">
@@ -25,7 +25,7 @@
         href="{% url 'category_posts' cat.id %}"
         class="list-group-item list-group-item-action {% if cat.id == category.id %}active{% endif %}"
       >
-        {{ cat.name }}
+        {{ cat.title }}
       </a>
       {% endfor %}
     </div>
