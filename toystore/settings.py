@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
-    'finance.apps.FinanceConfig',
+    'payment.apps.PaymentConfig',
 
     # Third-party Apps:
 

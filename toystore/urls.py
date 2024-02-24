@@ -8,7 +8,7 @@ urlpatterns = [
     path(settings.ADMIN_PATH, admin.site.urls),
     path('blog/', include('blog.urls')),
     path('cart/', include('cart.urls')),
-    path('finance/', include('finance.urls')),
+    path('payment/', include('payment.urls')),
     path('store/', include('store.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls'))
