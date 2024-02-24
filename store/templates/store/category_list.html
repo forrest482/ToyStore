@@ -1,0 +1,30 @@
+<!-- store/templates/store/category_list.html -->
+
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-3">
+  <h2>Categories</h2>
+  <div class="row">
+    {% for category in categories %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        {% if category.thumbnail %}
+        <img
+          src="{{ category.thumbnail.url }}"
+          class="card-img-top"
+          alt="{{ category.title }}"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ category.title }}</h5>
+          <a
+            href="{% url 'category_detail' category.id %}"
+            class="btn btn-primary"
+            >View Products</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

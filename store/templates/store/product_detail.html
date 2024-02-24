@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container mt-3">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+
+  <!-- Product Media -->
+  <div class="product-media">
+    {% for media in product.get_images %}
+    <img
+      src="{{ media.file.url }}"
+      class="img-fluid"
+      alt="{{ media.caption }}"
+    />
+    {% endfor %} {% for media in product.get_videos %}
+    <video controls>
+      <source src="{{ media.file.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {% endfor %}
+  </div>
+
+  <!-- Comments Section -->
+  <div class="comments mt-4">
+    <h5>Comments</h5>
+    {% for comment in comments %}
+    <div class="comment mb-2">
+      <p>
+        <strong>{{ comment.author.username }}</strong> said on {{
+        comment.created_at|date:"Y-m-d" }}:
+      </p>
+      <p>{{ comment.text }}</p>
+    </div>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Comment Form -->
+  {% if user.is_authenticated %}
+  <div class="comment-form mt-4">
+    <h5>Leave a comment</h5>
+    <form method="post">
+      {% csrf_token %} {{ comment_form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% else %}
+  <a
+    href="/admin/login/?next={{ request.path }}"
+    class="btn btn-outline-primary mt-3"
+    >Log in to add a comment</a
+  >
+  {% endif %}
+</div>
+{% endblock %}

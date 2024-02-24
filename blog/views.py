@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Category, Comment
 from .forms import CommentForm
-from django.contrib.auth.decorators import login_required
 
 
 def post_list(request):
