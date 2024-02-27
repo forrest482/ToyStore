@@ -19,6 +19,20 @@
     {% endfor %}
   </div>
 
+  <!-- Add to Cart Button -->
+  {% if user.is_authenticated %}
+  <form action="{% url 'add_to_cart' product.id %}" method="post" class="mt-3">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+  </form>
+  {% else %}
+  <a
+    href="/admin/login/?next={{ request.path }}"
+    class="btn btn-outline-primary mt-3"
+    >Log in to purchase</a
+  >
+  {% endif %}
+
   <!-- Comments Section -->
   <div class="comments mt-4">
     <h5>Comments</h5>

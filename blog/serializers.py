@@ -27,5 +27,5 @@ class PostSerializer(serializers.ModelSerializer):
                   'content', 'created_at', 'comments']
 
     def get_comments(self, obj):
-        active_comments = obj.comments.filter(is_active=True)
+        active_comments = obj.blog_comments.filter(is_active=True)
         return CommentSerializer(active_comments, many=True).data
