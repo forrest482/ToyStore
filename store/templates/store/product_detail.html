@@ -3,19 +3,23 @@
   <h2>{{ product.name }}</h2>
   <p>{{ product.description }}</p>
 
-  <!-- Product Media -->
-  <div class="product-media">
-    {% for media in product.get_images %}
-    <img
-      src="{{ media.file.url }}"
-      class="img-fluid"
-      alt="{{ media.caption }}"
-    />
-    {% endfor %} {% for media in product.get_videos %}
-    <video controls>
-      <source src="{{ media.file.url }}" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <!-- Image Gallery -->
+  <div class="row">
+    {% for image in product.get_images %}
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="{{ image.file.url }}" target="_blank">
+          <img
+            src="{{ image.file.url }}"
+            alt="{{ image.caption }}"
+            style="width: 100%"
+          />
+          <div class="caption">
+            <p>{{ image.caption }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
     {% endfor %}
   </div>
 
