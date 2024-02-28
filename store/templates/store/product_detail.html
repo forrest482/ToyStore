@@ -34,15 +34,15 @@
   {% endif %}
 
   <!-- Comments Section -->
-  <div class="comments mt-4">
-    <h5>Comments</h5>
+  <div class="comments mb-4 mt-4">
     {% for comment in comments %}
-    <div class="comment mb-2">
-      <p>
-        <strong>{{ comment.author.username }}</strong> said on {{
-        comment.created_at|date:"Y-m-d" }}:
-      </p>
-      <p>{{ comment.text }}</p>
+    <div class="card mb-2">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">
+          {{ comment.author.username }}
+        </h6>
+        <p class="card-text">{{ comment.text }}</p>
+      </div>
     </div>
     {% empty %}
     <p>No comments yet.</p>
